@@ -1,0 +1,14 @@
+name: shell commands
+
+
+on: [push]
+jobs:
+  run-shell-commands:
+    runs-0n: ubuntu-latest
+    steps:
+      -name: string
+       run: echo"welcome to development"
+      -name: multiline script
+       run: |
+         node -v
+         npm -vgi
