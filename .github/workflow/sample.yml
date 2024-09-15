@@ -14,4 +14,15 @@ jobs:
       - name: Python command
         run: |
          python -c "import platform; print(platform.processor())"
+        shell: python
+jobs:
+  run-shell-command:
+    runs-on: windows-latest
+    steps:
+      - name: Directory PowerShell
+        run: Get-Location
+        shell: pwsh  # Use PowerShell Core shell
+
+      - name: Directory Bash
+        run: pwd
         shell: bash
