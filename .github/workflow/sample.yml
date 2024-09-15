@@ -20,8 +20,6 @@ jobs:
     steps:
       - name: Directory PowerShell
         run: Get-Location
-        shell: pwsh  # Use PowerShell Core shell
-
       - name: Directory Bash
         run: pwd
         shell: bash
