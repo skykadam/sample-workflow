@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  run-bash:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Bash commands
+        run: |
+          echo "Running Bash commands"
+          pwd
+        shell: bash
+
+  run-powershell:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run PowerShell commands
+        run: |
+          echo "Running PowerShell commands"
+          Get-Location
+        shell: pwsh  # Use pwsh for PowerShell Core
+
+  run-cmd:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Command Prompt commands
+        run: |
+          echo "Running Command Prompt commands"
+          cd
+        shell: cmd
