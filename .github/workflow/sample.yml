@@ -15,7 +15,7 @@ jobs:
         run: |
          python -c "import platform; print(platform.processor())"
         shell: python
-  run-shell-command:
+  run-windows-command:
     runs-on: windows-latest
     steps:
       - name: Directory PowerShell
