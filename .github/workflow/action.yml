@@ -1,0 +1,47 @@
+name: Handle GitHub Events
+
+on:
+  issues:
+    types: [opened, assigned, closed, reopened]
+  pull_request:
+    types: [opened, assigned, closed, reopened]
+
+jobs:
+  handle-events:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Handle Issue Events
+        if: github.event_name == 'issues'
+        run: |
+          echo "Handling issue event..."
+          echo "Action: ${{ github.event.action }}"
+          # Add additional commands based on the action
+          if [ "${{ github.event.action }}" = "opened" ]; then
+            echo "Issue was opened."
+          elif [ "${{ github.event.action }}" = "assigned" ]; then
+            echo "Issue was assigned."
+          elif [ "${{ github.event.action }}" = "closed" ]; then
+            echo "Issue was closed."
+          elif [ "${{ github.event.action }}" = "reopened" ]; then
+            echo "Issue was reopened."
+          fi
+
+      - name: Handle Pull Request Events
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "Handling pull request event..."
+          echo "Action: ${{ github.event.action }}"
+          # Add additional commands based on the action
+          if [ "${{ github.event.action }}" = "opened" ]; then
+            echo "Pull request was opened."
+          elif [ "${{ github.event.action }}" = "assigned" ]; then
+            echo "Pull request was assigned."
+          elif [ "${{ github.event.action }}" = "closed" ]; then
+            echo "Pull request was closed."
+          elif [ "${{ github.event.action }}" = "reopened" ]; then
+            echo "Pull request was reopened."
+          fi
