@@ -15,7 +15,6 @@ jobs:
         run: |
          python -c "import platform; print(platform.processor())"
         shell: python
-jobs:
   run-shell-command:
     runs-on: windows-latest
     steps:
