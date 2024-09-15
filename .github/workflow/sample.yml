@@ -1,26 +1,31 @@
-name: shell commands
+name: Run Shell Commands
 
 on: [push]
+
 jobs:
-  run-shell-commands:
-    runs-on: ubuntu-latest
+  run-shell-command:
+    runs-on: ubuntu-latest  # or windows-latest, macos-latest
+
     steps:
-      - name: string
-        run: echo"welcome to development"
-      - name: multiline script
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Directory Bash (Ubuntu)
         run: |
-         node -v
-         npm -v
-      - name: Python command
+          echo "Current directory:"
+          pwd
+        shell: bash
+
+      - name: Directory PowerShell (Windows)
+        runs-on: windows-latest
+        shell: pwsh  # PowerShell Core
         run: |
-         import platform
-         print(platform.processor())
-        shell: python
-  run-windows-command:
-    runs-on: windows-latest
-    steps:
-      - name: Directory PowerShell
-        run: Get-Location
-      - name: Directory Bash
-        run: pwd
+          echo "Current directory:"
+          Get-Location
+
+      - name: Directory Bash (macOS)
+        runs-on: macos-latest
+        run: |
+          echo "Current directory:"
+          pwd
         shell: bash
